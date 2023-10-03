@@ -1,0 +1,20 @@
+{
+  "name": "scrapy_quotes",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "push": "git add . && git commit -m 'a' && git push"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IggyAsia2/scrawl_quotes.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IggyAsia2/scrawl_quotes/issues"
+  },
+  "homepage": "https://github.com/IggyAsia2/scrawl_quotes#readme"
+}

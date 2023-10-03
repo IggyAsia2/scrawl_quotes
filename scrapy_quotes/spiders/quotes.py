@@ -3,8 +3,8 @@ import scrapy
 
 class QuotesSpider(scrapy.Spider):
     name = 'quotes'
-    allowed_domains = ['trangvangvietnam.com']
-    start_urls = ['https://trangvangvietnam.com/categories/129310/xuat-nhap-khau-cac-cong-ty-xuat-nhap-khau.html']
+    allowed_domains = ['quotes.toscrape.com']
+    start_urls = ['http://quotes.toscrape.com/']
 
     def parse(self, response):
         for quote in response.css("div.quote"):
