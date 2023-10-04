@@ -7,7 +7,7 @@ class QuotesSpider(scrapy.Spider):
     start_urls = ['https://trangvangvietnam.com/srch/xuat_nhap_khau.html']
 
     def parse(self, response):
-        for quote in response.css("div.bg-white p-2"):
+        for quote in response.css("div.bg-white .p-2"):
             yield {
                 'text': quote.css("div.listings_center a::text").extract_first(),
                 # 'author': quote.css("small.author::text").extract_first(),
