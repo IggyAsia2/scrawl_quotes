@@ -9,12 +9,12 @@ class QuotesSpider(scrapy.Spider):
     def parse(self, response):
         for quote in response.css("div.bg-white"):
             company =  quote.css("div.listings_center a::text").extract_first()
+            email = quote.css("div.email_web_section a::attr(href)").extract_first()
+            address = quote.css("div.logo_congty_diachi small::text").extract_first()
+            phone = quote.css("div.listing_dienthoai a::text").extract_first()
             sponsor = quote.css("span.star_text::text").extract_first()
             major = quote.css("span.nganh_listing_txt::text").extract_first()
-            address = quote.css("div.logo_congty_diachi small::text").extract_first()
-            phone = response.css("div.listing_dienthoai a::text").extract_first()
-            email = response.css("div.email_web_section a::attr(href)").extract_first()
-            website = response.css("div.email_web_section a::attr(href)")[-1].extract()
+            website = quote.css("div.email_web_section a::attr(href)")[-1].extract()
             
             if company:
                 yield {
