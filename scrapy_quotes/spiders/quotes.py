@@ -3,7 +3,7 @@ import scrapy
 
 class QuotesSpider(scrapy.Spider):
     name = 'quotes'
-    allowed_domains = ['quotes.toscrape.com']
+    allowed_domains = ['trangvangvietnam.com']
     start_urls = ['https://trangvangvietnam.com/srch/xuat_nhap_khau.html']
 
     def parse(self, response):
