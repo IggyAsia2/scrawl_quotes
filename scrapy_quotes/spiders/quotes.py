@@ -8,11 +8,13 @@ class QuotesSpider(scrapy.Spider):
 
     def parse(self, response):
         for quote in response.css("div.bg-white"):
-            yield {
-                'company': quote.css("div.listings_center a::text").extract_first(),
-                # 'author': quote.css("small.author::text").extract_first(),
-                # 'tags': ','.join(quote.css("div.tags > a.tag::text").extract())
-            }
+            company =  quote.css("div.listings_center a::text").extract_first()
+            if company:
+                yield {
+                    'company': company,
+                    # 'author': quote.css("small.author::text").extract_first(),
+                    # 'tags': ','.join(quote.css("div.tags > a.tag::text").extract())
+                }
 
         next_page_url = response.xpath('//div[@id="paging"]/a/@href')[-1].extract()
         last_page_url = response.xpath('//div[@id="paging"]/a/@href')[-1].extract()
