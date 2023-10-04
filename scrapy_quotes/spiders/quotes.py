@@ -4,16 +4,16 @@ import scrapy
 class QuotesSpider(scrapy.Spider):
     name = 'quotes'
     allowed_domains = ['quotes.toscrape.com']
-    start_urls = ['http://quotes.toscrape.com/']
+    start_urls = ['https://trangvangvietnam.com/srch/xuat_nhap_khau.html']
 
     def parse(self, response):
-        for quote in response.css("div.quote"):
+        for quote in response.css("div.bg-white p-2"):
             yield {
-                'text': quote.css("span.text::text").extract_first(),
-                'author': quote.css("small.author::text").extract_first(),
-                'tags': ','.join(quote.css("div.tags > a.tag::text").extract())
+                'text': quote.css("div.listings_center a::text").extract_first(),
+                # 'author': quote.css("small.author::text").extract_first(),
+                # 'tags': ','.join(quote.css("div.tags > a.tag::text").extract())
             }
 
-        next_page_url = response.css("li.next > a::attr(href)").extract_first()
-        if next_page_url is not None:
-            yield scrapy.Request(response.urljoin(next_page_url))
+        # next_page_url = response.css("li.next > a::attr(href)").extract_first()
+        # if next_page_url is not None:
+        #     yield scrapy.Request(response.urljoin(next_page_url))
