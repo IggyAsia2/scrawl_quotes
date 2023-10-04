@@ -14,6 +14,7 @@ class QuotesSpider(scrapy.Spider):
             phone = quote.css("div.listing_dienthoai a::text").extract_first()
             sponsor = quote.css("span.star_text::text").extract_first()
             major = quote.css("span.nganh_listing_txt::text").extract_first()
+            website = quote.css("div.email_web_section a:nth-child(2)::attr(href)").extract_first()
             
             if company:
                 yield {
@@ -23,6 +24,7 @@ class QuotesSpider(scrapy.Spider):
                     'phone': phone,
                     'sponsor': sponsor,
                     'major': major,
+                    'website': website
                 }
 
         next_page_url = response.xpath('//div[@id="paging"]/a/@href')[-1].extract()
