@@ -18,16 +18,15 @@ class QuotesSpider(scrapy.Spider):
             
             if company:
                 yield {
-                    'company': company,
-                    'email': email.split(":")[1],
-                    'address': address,
-                    'phone': phone,
-                    'sponsor': sponsor,
-                    'major': major,
-                    'website': website
+                    'TÊN KHÁCH HÀNG': company,
+                    'ĐIỆN THOẠI': phone,
+                    'EMAIL': email.split(":")[1],
+                    'NHÓM KHÁCH HÀNG': 'NHÓM KHÁCH HÀNG',
+                    'ĐỊA CHỈ': address,
+                    'WEBSITE': website
                 }
 
         next_page_url = response.xpath('//div[@id="paging"]/a/@href')[-1].extract()
         last_page_url = response.xpath('//div[@id="paging"]/a/@href')[-2].extract()
-        if next_page_url != '?page=27':
+        if next_page_url != '?page=4':
             yield scrapy.Request(response.urljoin(next_page_url))
