@@ -11,7 +11,7 @@ class QuotesSpider(scrapy.Spider):
             company =  quote.css("div.listings_center a::text").extract_first()
             email = quote.css("div.email_web_section a::attr(href)").extract_first()
             address = quote.css("div.logo_congty_diachi small::text").extract_first()
-            phone = quote.css("div.listing_dienthoai a::text").extract()
+            phone = quote.css("div.listing_dienthoai a::text").extract_first()
             website = quote.css("div.email_web_section a:nth-child(2)::attr(href)").extract_first()
             
             if company:
@@ -25,6 +25,5 @@ class QuotesSpider(scrapy.Spider):
                 }
 
         next_page_url = response.xpath('//div[@id="paging"]/a/@href')[-1].extract()
-        last_page_url = response.xpath('//div[@id="paging"]/a/@href')[-2].extract()
         if next_page_url != '?page=4':
             yield scrapy.Request(response.urljoin(next_page_url))
