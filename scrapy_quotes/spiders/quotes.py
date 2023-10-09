@@ -1,6 +1,6 @@
 # scrapy_quotes/scrapy_quotes/spiders/quotes.py
 import scrapy
-
+import re
 
 class QuotesSpider(scrapy.Spider):
     name = "quotes"
@@ -19,6 +19,8 @@ class QuotesSpider(scrapy.Spider):
                 phone = quote.css(
                     "div.listing_diachi_nologo div.pb-0 a::text"
                 ).extract_first()
+            else:
+                phone = re.sub("[^0-9]","", phone)
             website = quote.css(
                 "div.email_web_section a:nth-child(2)::attr(href)"
             ).extract_first()
