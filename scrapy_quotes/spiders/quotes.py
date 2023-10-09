@@ -9,7 +9,7 @@ class QuotesSpider(scrapy.Spider):
     def parse(self, response):
         for quote in response.css("div.bg-white"):
             company =  quote.css("div.listings_center a::text").extract_first()
-            email = quote.css("div.email_web_section a::attr(href)").extract_first()
+            email = quote.css("div.email_web_section a::attr(href)").extract_first().split(":")[1]
             address = quote.css("div.logo_congty_diachi small::text").extract_first()
             phone = quote.css("div.listing_dienthoai a::text").extract_first()
             website = quote.css("div.email_web_section a:nth-child(2)::attr(href)").extract_first()
