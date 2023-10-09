@@ -36,7 +36,7 @@ class QuotesSpider(scrapy.Spider):
                     "ĐIỆN THOẠI": phone,
                     # 'EMAIL': email.split(":")[1],
                     "EMAIL": email,
-                    "NHÓM KHÁCH HÀNG": "NHÓM KHÁCH HÀNG",
+                    "NHÓM KHÁCH HÀNG": "Khách Đoàn Logistics",
                     "ĐỊA CHỈ": address,
                     "WEBSITE": website,
                 }
