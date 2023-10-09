@@ -42,5 +42,5 @@ class QuotesSpider(scrapy.Spider):
                 }
 
         next_page_url = response.xpath('//div[@id="paging"]/a/@href')[-1].extract()
-        if next_page_url is not None:
+        if next_page_url != '?page=27':
             yield scrapy.Request(response.urljoin(next_page_url))
