@@ -11,6 +11,10 @@ class QuotesSpider(scrapy.Spider):
     def parse(self, response):
         for quote in response.css("div.bg-white"):
             company = quote.css("div.listings_center a::text").extract_first()
+            if not company:
+                company = quote.css(
+                    "div.listings_center_khongxacthuc a::text"
+                ).extract_first()
             email = quote.css("div.email_web_section a::attr(href)").extract_first()
             if email:
                 email = email.split(":")[1]
