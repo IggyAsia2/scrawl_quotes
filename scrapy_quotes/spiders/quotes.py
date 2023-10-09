@@ -18,7 +18,8 @@ class QuotesSpider(scrapy.Spider):
                 yield {
                     'TÊN KHÁCH HÀNG': company,
                     'ĐIỆN THOẠI': phone,
-                    'EMAIL': email.split(":")[1],
+                    # 'EMAIL': email.split(":")[1],
+                    'EMAIL': email,
                     'NHÓM KHÁCH HÀNG': 'NHÓM KHÁCH HÀNG',
                     'ĐỊA CHỈ': address,
                     'WEBSITE': website
