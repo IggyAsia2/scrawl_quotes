@@ -15,6 +15,10 @@ class QuotesSpider(scrapy.Spider):
                 email = email.split(":")[1]
             address = quote.css("div.logo_congty_diachi small::text").extract_first()
             phone = quote.css("div.listing_dienthoai a::text").extract_first()
+            if not phone:
+                phone = quote.css(
+                    "div.listing_diachi_nologo div.pb-0 a::text"
+                ).extract_first()
             website = quote.css(
                 "div.email_web_section a:nth-child(2)::attr(href)"
             ).extract_first()
